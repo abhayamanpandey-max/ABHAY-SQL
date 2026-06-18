@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run AbhaySQL.sql (MySQL stable)",
+			"type": "shell",
+			"command": "Write-Host 'MySQL will ask for your password, then show query output below.'; $mysql='C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe'; Get-Content '.\\AbhaySQL.sql' | & $mysql -u root -p --table",
+			"group": "build"
+		},
+		{
+			"label": "Run Selected SQL From Clipboard (Safe)",
+			"type": "shell",
+			"command": "$mysql='C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe'; $sql=Get-Clipboard; if ([string]::IsNullOrWhiteSpace($sql)) { Write-Error 'Clipboard is empty. Copy selected SQL first.'; exit 1 }; $sql | & $mysql -u root -p",
+			"group": "build"
+		},
+		{
+			"label": "Setup database from script",
+			"type": "shell",
+			"command": "Write-Host 'MySQL will ask for your password, then show table output below.'; $mysql='C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin\\mysql.exe'; Get-Content '.\\setup_database.sql' | & $mysql -u root -p --table",
+			"group": "build"
+		}
+	]
+}
