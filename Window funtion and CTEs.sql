@@ -28,11 +28,11 @@ WITH cte_name AS (
     -- CTE query
     SELECT column1, column2
     FROM table_name
-    WHERE condition
+    WHERE u.salary > 50000
 )
 SELECT *
 FROM cte_name
-WHERE some_condition;
+WHERE u.salary < 100000;
 -- Example: Get users with above-average salary using a CTE:    
 WITH avg_salary AS (
     SELECT AVG(salary) AS average_salary
