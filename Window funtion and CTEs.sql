@@ -42,3 +42,11 @@ SELECT u.*
 FROM users u
 CROSS JOIN avg_salary a
 WHERE u.salary > a.average_salary;
+
+--Limitations of CTEs:
+-- 1. CTEs are not stored as an object and are only available during the execution of the query.
+-- 2. CTEs cannot be indexed, which may affect performance for large datasets.
+
+--Like satement
+SELECT * FROM users WHERE name LIKE 'A%';  -- Starts with A 
+
